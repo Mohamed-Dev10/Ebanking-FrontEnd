@@ -1,0 +1,35 @@
+<div class="card bg-gray-900 text-gray-200 rounded-xl shadow-lg">
+    <p-panel [toggleable]="true">
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-3 p-panel-header" style="background-color: #2d3748; border-radius: 0.75rem 0.75rem 0 0;">
+                <p-avatar
+                    image="../../assets/avatar.svg"
+                    size="large"
+                    shape="circle"
+                    [style]="{ 'background-color': '#4a5568' }" />
+                <span class="font-bold text-gray-300">
+                    {{username}} ({{roles}})
+                </span>
+            </div>
+        </ng-template>
+        <p class="m-0 text-gray-400">
+            Explore the power of our cutting-edge E-Banking App, crafted by the skilled team at Dev7HD. Experience a seamless and efficient platform to manage your finances, with user-friendly features that revolutionize your banking experience.
+        </p>
+    </p-panel>
+</div>
+<div *ngIf="loginService.userState.isAdmin" class="grid p-fluid gap-4 mt-4">
+    <div class="col-12 lg:col-6">
+        <div class="card bg-gray-800 text-gray-200 rounded-xl shadow-lg h-full">
+            <h5 class="text-gray-300">Accounts by type</h5>
+            <div class="flex justify-content-center">
+                <p-chart type="doughnut" [data]="BankAccountsCount" [options]="sectorOptions" />
+            </div>
+        </div>
+    </div>
+    <div class="col-12 lg:col-6">
+        <div class="card bg-gray-800 text-gray-200 rounded-xl shadow-lg h-full">
+            <h5 class="text-gray-300">Operations by month</h5>
+            <p-chart type="bar" [data]="operationsCount" [options]="operationsCount" />
+        </div>
+    </div>
+</div>
